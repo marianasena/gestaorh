@@ -1,0 +1,18 @@
+.mg-h2{
+    margin-top: 21px;
+}
+td{
+    vertical-align: middle !important;
+}
+.dropdown-menu>li>.btn-link {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #7b8a8b;
+    white-space: nowrap;
+}
+.hide{
+    display: none;
+}
