@@ -26,3 +26,6 @@ td{
 .active .chk-label{
     color: #fff;
 }
+.icon-select{
+    height: inherit;
+}
