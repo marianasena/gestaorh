@@ -90,5 +90,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('js_files')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            @yield('js_doc_ready')
+        });
+    </script>
 </body>
 </html>

@@ -32,8 +32,8 @@
                                     <ul class="dropdown-menu pull-right">
                                         <li><a href="/filiais/{{$branch->id}}/editar">Editar</a></li>
                                         <li>
-                                            <a href="javascript:document.getElementById('form_delete').submit();">Excluir</a>
-                                            <form method="POST" id="form_delete" action="/filiais/{{$branch->id}}/deletar">
+                                            <a href="javascript:document.getElementById('form_delete{{$branch->id}}').submit();">Excluir</a>
+                                            <form method="POST" id="form_delete{{$branch->id}}" action="/filiais/{{$branch->id}}/deletar">
                                                 {{method_field('DELETE')}}
                                                 {!! csrf_field() !!}
                                                 <button type="submit" class="hide">Excluir</button>

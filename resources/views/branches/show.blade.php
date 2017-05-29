@@ -45,6 +45,23 @@
         </div>
 
         <div class="row">
+            <div class="col-md-12">
+                <div class="form-group{{ $errors->has('departamentos') ? ' has-error' : '' }}">
+                    <h4>Departamentos</h4>
+                    <em>Departamentos da filial</em>
+                </div>
+            </div>
+        </div>
+        <div class="row list-group">
+            @foreach($allDepartments as $department)
+                <div class="col-md-12 list-group-item {{ (in_array($department->id, $selectedDepartments) ? 'active' : '') }}" >
+                    <input type="checkbox" {{ (in_array($department->id, $selectedDepartments) ? 'checked="checked"' : '') }} id="dep{{$department->id}}" value="{{$department->id}}" name="departamentos[]" />
+                    <label class="chk-label" for="dep{{$department->id}}">{{$department->name}}</label>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="row">
             <div class="col-md-3 col-md-offset-6 col-xs-6">
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary form-control">Salvar</button>
@@ -59,4 +76,8 @@
 
     </form>
 
+@endsection
+
+@section('js_files')
+    <script src="{{ asset('js/forms.js') }}"></script>
 @endsection

@@ -30,8 +30,7 @@ class DepartmentsController extends Controller
      */
     public function create()
     {
-        $branches = Branch::all();
-        return view('departments.create', compact('branches'));
+        return view('departments.create');
     }
 
     /**
@@ -42,7 +41,18 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, $this->validationRules);
+
+        $department = new Department;
+        $department->name = $request['nome'];
+
+        if ($department->save())
+            flash('Departamento cadastrado com sucesso!')->success();
+        else
+            flash('Não foi possível cadastrar o Departamento. Verifique os campos e tente novamente.')->error();
+
+        //retorno pra view
+        return redirect('departamentos');
     }
 
     /**
@@ -64,7 +74,7 @@ class DepartmentsController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return view('departments.edit', compact('department'));
     }
 
     /**
@@ -76,7 +86,17 @@ class DepartmentsController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $this->validate($request, $this->validationRules);
+
+        $department->name = $request['nome'];
+
+        if ($department->save())
+            flash('Departamento editado com sucesso!')->success();
+        else
+            flash('Não foi possível editar o Departamento. Verifique os campos e tente novamente.')->error();
+
+        //retorno pra view
+        return redirect('departamentos');
     }
 
     /**
@@ -87,6 +107,11 @@ class DepartmentsController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        if ($department->delete())
+            flash('Departamento excluído com sucesso!')->success();
+        else
+            flash('Não foi possível excluir o Departamento. Verifique os campos e tente novamente.')->error();
+
+        return redirect('departamentos');
     }
 }

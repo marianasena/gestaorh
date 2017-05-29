@@ -29,7 +29,7 @@
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" class="form-control" id="nome">
+                    <input type="text" name="nome" value="{{old('nome')}}" class="form-control" id="nome">
                 </div>
             </div>
         </div>
@@ -38,9 +38,26 @@
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('sigla') ? ' has-error' : '' }}">
                     <label for="nome">Sigla</label>
-                    <input type="text" name="sigla" class="form-control" id="sigla">
+                    <input type="text" name="sigla" value="{{old('sigla')}}"  class="form-control" id="sigla">
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group{{ $errors->has('departamentos') ? ' has-error' : '' }}">
+                    <h4>Departamentos</h4>
+                    <em>Departamentos da filial</em>
+                </div>
+            </div>
+        </div>
+        <div class="row list-group">
+            @foreach($departments as $department)
+                <div class="col-md-12 list-group-item" >
+                    <input type="checkbox" id="dep{{$department->id}}" value="{{$department->id}}" name="departamentos[]" />
+                    <label class="chk-label" for="dep{{$department->id}}">{{$department->name}}</label>
+                </div>
+            @endforeach
         </div>
 
         <div class="row">
@@ -58,4 +75,10 @@
 
     </form>
 
+@endsection
+
+@section('js_doc_ready')
+    $('.list-group-item > input[type=checkbox]').click(function(){
+        $(this).parent().toggleClass('active');
+    });
 @endsection

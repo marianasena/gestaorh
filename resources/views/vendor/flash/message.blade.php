@@ -1,4 +1,22 @@
+
 @foreach ((array) session('flash_notification') as $message)
+
+    @php
+        switch ($message['level']) {
+            case 'success':
+                $message['icon'] = 'ok-sign';
+                break;
+            case 'error':
+                $message['icon'] = 'remove-sign';
+                break;
+            case 'warning':
+                $message['icon'] = 'exclamation-sign';
+                break;
+            default:
+                $message['icon'] = 'info-sign';
+        }
+    @endphp
+
     @if ($message['overlay'])
         @include('flash::modal', [
             'modalClass' => 'flash-modal',

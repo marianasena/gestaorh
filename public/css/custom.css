@@ -16,3 +16,13 @@ td{
 .hide{
     display: none;
 }
+.alert ul li::first-letter{
+    text-transform: uppercase;
+}
+.chk-label{
+    color: #000;
+    font-weight:normal;
+}
+.active .chk-label{
+    color: #fff;
+}

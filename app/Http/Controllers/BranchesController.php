@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Branch;
+use App\Department;
+use App\BranchDepartment;
 
 class BranchesController extends Controller
 {
@@ -18,12 +20,20 @@ class BranchesController extends Controller
         return view('branches.index', compact('branches'));
     }
 
-    public function show(Branch $branch){
-        return view('branches.show', compact('branch'));
+    public function edit(Branch $branch){
+        $allDepartments = Department::orderBy('name', 'asc')->get();
+        $selectedDepartments = $branch->departments()->pluck('id')->all();
+
+        return view('branches.show', [
+            'branch' => $branch,
+            'allDepartments' => $allDepartments,
+            'selectedDepartments' => $selectedDepartments
+        ]);
     }
 
     public function create(){
-        return view('branches.create');
+        $departments = Department::orderBy('name', 'asc')->get();
+        return view('branches.create', compact('departments'));
     }
 
     public function store(Request $request){
@@ -33,10 +43,13 @@ class BranchesController extends Controller
         $branch = new Branch;
         $branch->name = $request['nome'];
         $branch->initials = $request['sigla'];
+        $departments = $request['departamentos'];
 
-        if ($branch->save())
+
+        if ($branch->save()){
+            $branch->departments()->attach($departments);
             flash('Filial cadastrada com sucesso!')->success();
-        else
+        }else
             flash('Não foi possível cadastrar a filial. Verifique os campos e tente novamente.')->error();
 
         //retorno pra view
@@ -51,15 +64,16 @@ class BranchesController extends Controller
         $branch->name = $request['nome'];
         $branch->initials = $request['sigla'];
 
-        if ($branch->save())
+        if ($branch->save()) {
+            $branch->departments()->sync($request['departamentos']);
             flash('Filial editada com sucesso!')->success();
-        else
+        }else
             flash('Não foi possível editar a filial. Verifique os campos e tente novamente.')->error();
 
         return redirect('filiais');
     }
 
-    public function delete(Branch $branch){
+    public function destroy(Branch $branch){
 
         if ($branch->delete())
             flash('Filial excluída com sucesso!')->success();

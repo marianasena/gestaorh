@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
+    protected $guarded = [];
+
     public function branches(){
-        return $this->belongsToMany('App\Branch');
+        return $this->belongsToMany('App\Branch', 'branch_departments')->withTimestamps();
     }
 }

@@ -19,9 +19,9 @@ class CreateManagersTable extends Migration
             $table->integer('branch_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
-            $table->foreign('department_id')->references('department_id')->on('branch_departments');
-            $table->foreign('branch_id')->references('branch_id')->on('branch_departments');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('department_id')->references('department_id')->on('branch_departments')->onDelete('cascade');
+            $table->foreign('branch_id')->references('branch_id')->on('branch_departments')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

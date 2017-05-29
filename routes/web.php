@@ -52,10 +52,19 @@ Route::get('solicitacao/desligamento', function (){
 Route::get('filiais', 'BranchesController@index');
 Route::get('filiais/cadastro', 'BranchesController@create');
 Route::post('filiais', 'BranchesController@store');
-Route::get('filiais/{branch}/editar/', 'BranchesController@show');
+Route::get('filiais/{branch}/editar/', 'BranchesController@edit');
 Route::patch('filiais/{branch}/editar/', 'BranchesController@update');
-Route::delete('filiais/{branch}/deletar/', 'BranchesController@delete');
+Route::delete('filiais/{branch}/deletar/', 'BranchesController@destroy');
 
 //Departamentos
 Route::get('departamentos', 'DepartmentsController@index');
+Route::post('departamentos', 'DepartmentsController@store');
 Route::get('departamentos/cadastro', 'DepartmentsController@create');
+Route::get('departamentos/{department}/editar/', 'DepartmentsController@edit');
+Route::patch('departamentos/{department}/editar/', 'DepartmentsController@update');
+Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@destroy');
+
+//Solicitação de Desligamento
+Route::get('solicitar/desligamento', function(){
+    return view('solicitacao');
+});
