@@ -76,3 +76,11 @@ Route::get('cargos/cadastro', 'RolesController@create');
 Route::get('cargos/{role}/editar/', 'RolesController@edit');
 Route::patch('cargos/{role}/editar/', 'RolesController@update');
 Route::delete('cargos/{role}/deletar/', 'RolesController@destroy');
+
+//Funcionário
+Route::get('funcionarios', 'EmployeesController@index');
+Route::post('funcionarios', 'EmployeesController@store');
+Route::get('funcionarios/cadastro', 'EmployeesController@create');
+Route::get('funcionarios/{employee}/editar/', 'EmployeesController@edit');
+Route::patch('funcionarios/{employee}/editar/', 'EmployeesController@update');
+Route::delete('funcionarios/{employee}/deletar/', 'EmployeesController@destroy');
