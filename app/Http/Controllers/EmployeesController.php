@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Branch;
 use App\Employee;
 use App\Department;
+use App\Role;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
 {
     private $validationRules = [
-        'name' => 'required|min:5',
-        'department_id' => 'required',
-        'branch_id' => 'required',
-        'role_id' => 'required',
-        'admitted_at' => 'required',
-        'salary' => 'required'
+        'nome' => 'required|min:5',
+        'departamento' => 'required',
+        'filial' => 'required',
+        'cargo' => 'required',
+        'matricula' => 'required',
+        'admissao' => 'required',
+        'salario' => 'required'
     ];
 
 
@@ -26,9 +29,38 @@ class EmployeesController extends Controller
     public function create()
     {
         $departments = Department::orderBy('name', 'asc')->get();
+        $branches = Branch::orderBy('name', 'asc')->get();
+        $roles = Role::orderBy('name', 'asc')->get();
         return view('employees.create', [
-            'departments' => $departments
+            'departments' => $departments,
+            'branches' => $branches,
+            'roles' => $roles
         ]);
+    }
+
+    public function store(Request $request){
+
+        $this->validate($request, $this->validationRules);
+
+        $employee = new Employee;
+        $employee->name = $request['nome'];
+        $employee->department_id = $request['departamento'];
+        $employee->branch_id = $request['filial'];
+        $employee->role_id = $request['cargo'];
+        $employee->registration = $request['matricula'];
+        $employee->admitted_at = $request['admissao'];
+        $employee->salary = $request['salario'];
+
+
+        if ($employee->save())
+            flash('Funcionário cadastrado com sucesso!')->success();
+        else
+            flash('Não foi possível cadastrar o Funcionário. Verifique os campos e tente novamente.')->error();
+
+        //retorno pra view
+        return redirect('funcionarios');
+
+
     }
 
 
