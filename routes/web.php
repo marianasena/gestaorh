@@ -68,3 +68,11 @@ Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@dest
 Route::get('solicitar/desligamento', function(){
     return view('solicitacao');
 });
+
+//Cargo
+Route::get('cargos', 'RolesController@index');
+Route::post('cargos', 'RolesController@store');
+Route::get('cargos/cadastro', 'RolesController@create');
+Route::get('cargos/{role}/editar/', 'RolesController@edit');
+Route::patch('cargos/{role}/editar/', 'RolesController@update');
+Route::delete('cargos/{role}/deletar/', 'RolesController@destroy');
