@@ -17,7 +17,7 @@ class EmployeesController extends Controller
         'cargo' => 'required',
         'matricula' => 'required',
         'admissao' => 'required',
-        'salario' => 'required'
+        'salario' => 'required|numeric'
     ];
 
 

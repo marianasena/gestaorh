@@ -16,31 +16,19 @@ Route::get('/', function () {
 });
 
 
-// Authentication routes...
-Route::get('auth/login', 'Front@login');
-Route::post('auth/login', 'Front@authenticate');
-Route::get('auth/logout', 'Front@logout');
+Route::get('login_teste', function(){
+    return view('auth.login2');
+});
 
 Route::get('/checkout', [
     'middleware' => 'auth',
     'uses' => 'Front@checkout'
 ]);
 
-// route to show the login form
-Route::get('login', 'UserController@showLogin');
-
-
-
 //Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('solicitacao/desligamento', function (){
@@ -64,6 +52,15 @@ Route::get('departamentos/{department}/editar/', 'DepartmentsController@edit');
 Route::patch('departamentos/{department}/editar/', 'DepartmentsController@update');
 Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@destroy');
 
+//Usuários
+Route::get('usuarios', 'UsersController@index');
+Route::post('usuarios', 'UsersController@store');
+Route::get('usuarios/cadastro', 'UsersController@create');
+Route::get('usuarios/{user}/editar/', 'UsersController@edit'); /*
+Route::patch('departamentos/{department}/editar/', 'DepartmentsController@update');
+Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@destroy');
+
+ // */
 //Solicitação de Desligamento
 Route::get('solicitar/desligamento', function(){
     return view('solicitacao');

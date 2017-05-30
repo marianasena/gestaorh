@@ -95,7 +95,11 @@
             <div class="col-md-4">
                 <div class="form-group{{ $errors->has('salario') ? 'has-error' : '' }}">
                     <label for="salario">Salário</label>
+<<<<<<< HEAD
                     <input type="number" min="0" name="salario" value="{{ old('salario') }}" id="salario" class="form-control">
+=======
+                    <input type="number" step="0.1" min="0" name="salario" id="salario" class="form-control">
+>>>>>>> cfe915cffd6b347f50ca1bb9e71a9fbbd2913d90
                 </div>
             </div>
 
