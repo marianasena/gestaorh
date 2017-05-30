@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    //
+    public function employees(){
+        return $this->hasMany(Employee::class);
+    }
 }

@@ -17,13 +17,23 @@
         <div class="col-md-12">
             <table class="table table-striped table-hover">
                 <thead>
+                    <th>Matrícula</th>
                     <th>Nome</th>
+                    <th>Filial</th>
+                    <th>Departamento</th>
+                    <th>Cargo</th>
+                    <th>Admissão</th>
                     <th class="col-md-1"></th>
                 </thead>
                 <tbody>
                     @foreach($employees as $employee)
                         <tr>
-                            <td>{{$employee->name}}</td>
+                            <td>{{ $employee->registration }}</td>
+                            <td>{{ $employee->name }}</td>
+                            <td>{{ $employee->branch->name }}</td>
+                            <td>{{ $employee->department->name }}</td>
+                            <td>{{ $employee->role->name }}</td>
+                            <td>{{ Carbon\Carbon::parse($employee->admitted_at)->format('d/m/Y') }}</td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,7 +43,7 @@
                                         <li><a href="/funcionarios/{{$employee->id}}/editar">Editar</a></li>
                                         <li>
                                             <a href="javascript:document.getElementById('form_delete{{$employee->id}}').submit();">Excluir</a>
-                                            <form method="POST" id="form_delete{{$employee->id}}" action="/funcionarios/{{$role->id}}/deletar">
+                                            <form method="POST" id="form_delete{{$employee->id}}" action="/funcionarios/{{$employee->id}}/deletar">
                                                 {{method_field('DELETE')}}
                                                 {!! csrf_field() !!}
                                                 <button type="submit" class="hide">Excluir</button>

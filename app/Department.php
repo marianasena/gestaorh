@@ -11,4 +11,9 @@ class Department extends Model
     public function branches(){
         return $this->belongsToMany('App\Branch', 'branch_departments')->withTimestamps();
     }
+
+    public function employees(){
+        return $this->hasMany(Employee::class);
+    }
+
 }
