@@ -29,7 +29,7 @@
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" class="form-control" id="nome">
+                    <input type="text" name="nome" value="{{old('nome')}}" class="form-control" id="nome">
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="nome">E-mail</label>
-                    <input type="email" name="email" class="form-control" id="nome">
+                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email">
                 </div>
             </div>
         </div>
@@ -47,13 +47,13 @@
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('usuario') ? ' has-error' : '' }}">
                     <label for="nome">Usuário</label>
-                    <input type="text" name="nome" class="form-control" id="nome">
+                    <input type="text" name="usuario" value="{{old('usuario')}}" class="form-control" id="usuario">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group{{ $errors->has('usuario') ? ' has-error' : '' }}">
                     <label for="nome">Senha</label>
-                    <input type="password" name="nome" class="form-control" id="nome">
+                    <input type="password" name="senha" value="{{old('senha')}}" class="form-control" id="senha">
                 </div>
             </div>
         </div>

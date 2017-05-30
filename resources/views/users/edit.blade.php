@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2>Editar Departamento</h2>
+            <h2>Editar Usuário</h2>
         </div>
     </div>
 
@@ -23,14 +23,28 @@
         </div>
     @endif
 
-    <form method="post" action="/departamentos/{{$department->id}}/editar/">
+    <form method="post" action="{{url('usuarios')}}">
         {!! csrf_field() !!}
-        {{method_field('PATCH')}}
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" value="{{$department->name}}" class="form-control" id="nome">
+                    <input type="text" name="nome" value="{{$user->name}}" class="form-control" id="nome">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label for="nome">E-mail</label>
+                    <input type="email" name="email" value="{{$user->email}}" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group{{ $errors->has('usuario') ? ' has-error' : '' }}">
+                    <label for="nome">Usuário</label>
+                    <input type="text" name="usuario" value="{{$user->username}}" class="form-control" id="usuario">
                 </div>
             </div>
         </div>
@@ -39,12 +53,12 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-6 col-xs-6">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary form-control">Salvar</button>
+                    <a class="btn btn-default form-control" href="{{url('usuarios')}}">Voltar</a>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <div class="form-group">
-                    <a class="btn btn-default form-control" href="{{url('departamentos')}}">Voltar</a>
+                    <button type="submit" class="btn btn-primary form-control">Cadastrar</button>
                 </div>
             </div>
         </div>

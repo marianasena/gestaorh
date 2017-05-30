@@ -95,7 +95,7 @@
             <div class="col-md-4">
                 <div class="form-group{{ $errors->has('salario') ? 'has-error' : '' }}">
                     <label for="salario">Salário</label>
-                    <input type="number" min="0" name="salario" id="salario" class="form-control">
+                    <input type="number" step="0.1" min="0" name="salario" id="salario" class="form-control">
                 </div>
             </div>
 

@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Employee;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    private $validationRules = [
+        'nome' => 'required|min:5',
+        'email' => 'required|email',
+        'usuario' => 'required|min:5',
+        'senha' => 'required|min:',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +32,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $employees = Employee::orderBy('name', 'asc')->get();
-        return view('users.create', compact('employees'));
+        return view('users.create');
     }
 
     /**
@@ -38,7 +43,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, $this->validationRules);
+
+        $user = new User;
+        $user->name = $request['nome'];
+        $user->email = $request['email'];
+        $user->username = $request['usuario'];
+        $user->password = bcrypt($request['senha']);
+
+        if ($user->save())
+            flash('Usuário cadastrado com sucesso!')->success();
+        else
+            flash('Não foi possível cadastrar o Usuário. Verifique os campos e tente novamente.')->error();
+
+        //retorno pra view
+        return redirect('usuarios');
     }
 
     /**
@@ -60,7 +79,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**

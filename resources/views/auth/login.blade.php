@@ -13,51 +13,59 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login2.css') }}" rel="stylesheet">
 </head>
 <body>
+<div class="container">
 
-<div class="row">
+    <div class="login-screen">
 
-    <!-- Mixins-->
-    <!-- Pen Title-->
-    <div class="pen-title">
-        <h1></h1>
-    </div>
-    <div class="container">
-        <div class="card">
-            <h1 class="title">Login</h1>
-            <form method="POST" action="{{url('login')}}">
-                {!! csrf_field() !!}
-                <div class="input-container {{ $errors->has('email') ? ' has-error' : '' }}">
-                    <input type="email" name="email" id="email" required="required" />
-                    <label for="email">Email</label>
-                    <div class="bar"></div>
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
-                </div>
-                <div class="input-container{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <input type="password" name="password" id="password" required="required"/>
-                    <label for="Password">Senha</label>
-                    <div class="bar"></div>
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
-                </div>
-                <div class="button-container">
-
-                    <button type="submit" class="btn btn-default"><span>Acessar</span></button>
-                </div>
-                <div class="footer"><a href="{{ route('password.request') }}">Esqueceu sua senha?</a></div>
-            </form>
+        <div class="row">
+            <div class="login-icon col-md-3 text-center">
+                <img src="{{ asset('icons/team-c.svg') }}" width="100" height="100" alt="Bem-vindo ao Gestão de RH"><br />
+                <small><strong>Bem-vindo ao</strong></small><br />
+                <h3 class="brand">Gestão de RH</h3>
+            </div>
+            <div class=" col-md-9">
+                <form method="post" action="{{url('login')}}">
+                    {!! csrf_field() !!}
+                    <div class="login-form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback {{ $errors->has('username') ? ' has-error' : '' }}">
+                                    <input type="text" class="form-control" name="username" value="{{old('username')}}" id="username" placeholder="Usuário" />
+                                    <i class="glyphicon glyphicon-user form-control-feedback"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
+                                    <input type="password" class="form-control" name="password" value="{{old('password')}}" id="password" placeholder="Senha" />
+                                    <i class="glyphicon glyphicon-lock form-control-feedback"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success form-control">Acessar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group text-center">
+                                    <a href="{{ route('password.request') }}" class="btn-link">Esqueceu sua senha?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
