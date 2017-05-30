@@ -49,6 +49,17 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Mantenha-me conectado
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-success form-control">Acessar</button>
                                 </div>
                             </div>

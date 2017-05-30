@@ -42,7 +42,7 @@
             <div class="col-md-4">
                 <div class="form-group{{ $errors->has('departamento') ? ' has-error' : '' }}">
                     <label for="departamento">Departamento</label>
-                    <select name="departamento" id="departamento" class="form-control">
+                    <select name="departamento" id="departamento" class="form-control" data-value="{{$employee->department_id}}">
                         <option value="">Selecione o departamento</option>
                         @foreach($departments as $department)
                             <option value="{{$department->id}}">{{ $department->name }}</option>
@@ -54,7 +54,7 @@
             <div class="col-md-4">
                 <div class="form-group{{ $errors->has('filial') ? 'has-error' : '' }}">
                     <label for="filial">Filial</label>
-                    <select name="filial" id="filial" class="form-control">
+                    <select name="filial" id="filial" class="form-control" data-value="{{$employee->branch_id}}">
                         <option value="">Selecione a filial</option>
                         @foreach($branches as $branch)
                             <option value="{{ $branch->id }}">{{  $branch->name }}</option>
@@ -118,4 +118,8 @@
 
     </form>
 
+@endsection
+
+@section('js_files')
+    <script type="text/javascript" src="{{ asset('js/forms.js') }}"></script>
 @endsection

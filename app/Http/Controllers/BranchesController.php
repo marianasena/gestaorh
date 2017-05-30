@@ -10,10 +10,21 @@ use App\BranchDepartment;
 
 class BranchesController extends Controller
 {
+
     private $validationRules = [
         'nome' => 'required|min:10',
         'sigla' => 'required|min:2|max:5'
     ];
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(){
         $branches = Branch::all();

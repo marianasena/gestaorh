@@ -15,7 +15,8 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+<div id="app">
+    @if (Auth::check())
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -53,48 +54,59 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                        Sair
+                                    </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container">
-            @include('flash::message')
+    @endif
 
-            @yield('content')
-        </div>
+    @if (Auth::guest())
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header col-md-12">
+                    <a class="navbar-brand" href="#">Gestão de RH</a>
+                    <ul class="nav navbar-nav navbar-right pull-right">
+                        <li><a href="{{url('login')}}">Acessar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    @endif
+
+    <div class="container">
+        @include('flash::message')
+
+        @yield('content')
     </div>
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    @yield('js_files')
-    <script type="text/javascript">
-        $(document).ready(function(){
-            @yield('js_doc_ready')
-        });
-    </script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('js_files')
+<script type="text/javascript">
+    $(document).ready(function(){
+        @yield('js_doc_ready')
+    });
+</script>
 </body>
 </html>
