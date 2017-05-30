@@ -64,6 +64,15 @@ Route::get('departamentos/{department}/editar/', 'DepartmentsController@edit');
 Route::patch('departamentos/{department}/editar/', 'DepartmentsController@update');
 Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@destroy');
 
+//Usuários
+Route::get('usuarios', 'UsersController@index');
+Route::post('usuarios', 'UsersController@store');
+Route::get('usuarios/cadastro', 'UsersController@create'); /*
+Route::get('departamentos/{department}/editar/', 'DepartmentsController@edit');
+Route::patch('departamentos/{department}/editar/', 'DepartmentsController@update');
+Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@destroy');
+
+ */
 //Solicitação de Desligamento
 Route::get('solicitar/desligamento', function(){
     return view('solicitacao');
