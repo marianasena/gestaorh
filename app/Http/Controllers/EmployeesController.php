@@ -94,5 +94,14 @@ class EmployeesController extends Controller
         return redirect('funcionarios');
     }
 
+    public function destroy(Employee $employee)
+    {
+        if ($employee->delete())
+            flash('Funcionário excluído com sucesso!')->success();
+        else
+            flash('Não foi possível excluir o Funcionário. Verifique os campos e tente novamente.')->error();
+        return redirect('funcionarios');
+    }
+
 
 }

@@ -66,7 +66,7 @@
             <div class="col-md-4">
                 <div class="form-group{{ $errors->has('cargo') ? 'has-error' : '' }}">
                     <label for="cargo">Cargo</label>
-                    <select name="cargo" id="cargo" class="form-control">
+                    <select name="cargo" id="cargo" class="form-control" data-value="{{$employee->role_id}}">
                         <option value="">Selecione o cargo</option>
                         @foreach($roles as $role)
                             <option value="{{ $role->id }}">{{ $role->name }}</option>
