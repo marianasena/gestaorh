@@ -9,18 +9,7 @@
     </div>
 
     @if (count($errors) > 0)
-    <div class="row">
-        <div class="col-md-12">
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-
-        </div>
-    </div>
+        @include('layouts.error')
     @endif
 
     <form method="POST" action="/filiais/{{$branch->id}}/editar/">
@@ -28,25 +17,31 @@
         {{ method_field('PATCH') }}
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
+                <div class="form-group {{ $errors->has('nome') ? 'has-error' : '' }}">
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" value="{{$branch->name}}" class="form-control" id="nome">
+                    <span class="help-block">
+                        <strong>{{ $errors->first('nome') }}</strong>
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group{{ $errors->has('sigla') ? ' has-error' : '' }}">
+                <div class="form-group {{ $errors->has('sigla') ? 'has-error' : '' }}">
                     <label for="nome">Sigla</label>
                     <input type="text" name="sigla" value="{{$branch->initials}}" class="form-control" id="sigla">
+                    <span class="help-block">
+                        <strong>{{ $errors->first('sigla') }}</strong>
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group{{ $errors->has('departamentos') ? ' has-error' : '' }}">
+                <div class="form-group {{ $errors->has('departamentos') ? 'has-error' : '' }}">
                     <h4>Departamentos</h4>
                     <em>Departamentos da filial</em>
                 </div>
@@ -64,12 +59,12 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-6 col-xs-6">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary form-control">Salvar</button>
+                    <a class="btn btn-default form-control" href="{{url('filiais')}}">Voltar</a>
                 </div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <div class="form-group">
-                    <a class="btn btn-default form-control" href="{{url('filiais')}}">Voltar</a>
+                    <button type="submit" class="btn btn-primary form-control">Cadastrar</button>
                 </div>
             </div>
         </div>
