@@ -102,22 +102,31 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item active col-md-12">
-                                <div class="pull-left icon-select"><span class="glyphicon glyphicon-unchecked"></span></div>
-                                <div class="col-md-11">
-                                    <h4 class="list-group-item-heading">First List Group Item Heading</h4>
-                                    <p class="list-group-item-text">List Group Item Text</p>
+                        <div class="form-group">
+                            <label class="input-group">
+                            <span class="input-group-addon">
+                                <input type="radio" name="test" value="0" />
+                            </span>
+                                <div class="form-control form-control-static">
+                                    Radio NO
                                 </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <h4 class="list-group-item-heading">Second List Group Item Heading</h4>
-                                <p class="list-group-item-text">List Group Item Text</p>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <h4 class="list-group-item-heading">Third List Group Item Heading</h4>
-                                <p class="list-group-item-text">List Group Item Text</p>
-                            </a>
+                                <span class="glyphicon form-control-feedback"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="input-group">
+                            <span class="input-group-addon">
+                                <input type="radio" name="test" value="1" />
+                            </span>
+                                <div class="form-control form-control-static form-control-checkbox">
+                                    <p>
+                                        Radio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YES
+                                        Radio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YESRadio YES
+                                    </p>
+                                    <small><em>Teste</em></small>
+                                </div>
+                                <span class="glyphicon form-control-feedback "></span>
+                            </label>
                         </div>
                     </div>
                 </div>

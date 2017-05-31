@@ -144,7 +144,7 @@ a,a:hover,a:focus {
     width:240px;
     height:100%;
     position:fixed;
-    background:#32323a;
+    background:#2c3e50;
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;
@@ -223,7 +223,7 @@ ul.sidebar-menu {
     display:block;
 }
 ul.sidebar-menu li ul.sub li {
-    background:#28282e;
+    background:#1a2b3d;
     margin-bottom:0;
     margin-left:0;
     margin-right:0;
@@ -275,7 +275,7 @@ ul.sidebar-menu li a {
     transition:all 0.3s ease;
 }
 ul.sidebar-menu li a.active,ul.sidebar-menu li a:hover,ul.sidebar-menu li a:focus {
-    background:#28282e;
+    background:#1a2b3d;
     color:#1FB5AD;
     display:block;
     -webkit-transition:all 0.3s ease;

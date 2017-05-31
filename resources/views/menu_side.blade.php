@@ -86,70 +86,6 @@
                     </ul>
                 </li>
                 <!-- settings end -->
-                <!-- inbox dropdown start-->
-                <li id="header_inbox_bar" class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-important">4</span>
-                    </a>
-                    <ul class="dropdown-menu extended inbox">
-                        <li>
-                            <p class="red">You have 4 Mails</p>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="images/avatar-mini.jpg"></span>
-                                <span class="subject">
-                                <span class="from">Jonathan Smith</span>
-                                <span class="time">Just now</span>
-                                </span>
-                                <span class="message">
-                                    Hello, this is an example msg.
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="images/avatar-mini-2.jpg"></span>
-                                <span class="subject">
-                                <span class="from">Jane Doe</span>
-                                <span class="time">2 min ago</span>
-                                </span>
-                                <span class="message">
-                                    Nice admin template
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="images/avatar-mini-3.jpg"></span>
-                                <span class="subject">
-                                <span class="from">Tasi sam</span>
-                                <span class="time">2 days ago</span>
-                                </span>
-                                <span class="message">
-                                    This is an example msg.
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="images/avatar-mini.jpg"></span>
-                                <span class="subject">
-                                <span class="from">Mr. Perfect</span>
-                                <span class="time">2 hour ago</span>
-                                </span>
-                                <span class="message">
-                                    Hi there, its a test
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">See all messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- inbox dropdown end -->
                 <!-- notification dropdown start-->
                 <li id="header_notification_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -192,6 +128,7 @@
             </ul>
             <!--  notification end -->
         </div>
+
         <div class="top-nav clearfix">
             <!--search & user info start-->
             <ul class="nav pull-right top-menu">
@@ -218,123 +155,50 @@
         <!-- sidebar menu start-->            <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a href="index.html">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
+                    <a href="{{url('home')}}">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
                     </a>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-laptop"></i>
-                        <span>Layouts</span>
+                <li class="sub-menu" >
+                    <a href="javascript:;" class="active">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span>Cadastros</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="boxed_page.html">Boxed Page</a></li>
-                        <li><a href="horizontal_menu.html">Horizontal Menu</a></li>
-                        <li><a href="language_switch.html">Language Switch Bar</a></li>
+                        <li><a href="#">Cargos</a></li>
+                        <li><a href="#">Departamentos</a></li>
+                        <li class="active"><a href="{{route('filiais')}}">Filiais</a></li>
+                        <li><a href="#">Funcionários</a></li>
+                        <li><a href="#">Usuários</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>UI Elements</span>
+                        <i class=" fa fa-id-card-o"></i>
+                        <span>Nova Solicitação</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="general.html">General</a></li>
-                        <li><a href="buttons.html">Buttons</a></li>
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="widget.html">Widget</a></li>
-                        <li><a href="slider.html">Slider</a></li>
-                        <li><a href="tree_view.html">Tree View</a></li>
-                        <li><a href="nestable.html">Nestable</a></li>
-                        <li><a href="grids.html">Grids</a></li>
-                        <li><a href="calendar.html">Calender</a></li>
-                        <li><a href="draggable_portlet.html">Draggable Portlet</a></li>
+                        <li><a href="morris.html">Alteração</a></li>
+                        <li><a href="morris.html">Contratação</a></li>
+                        <li><a href="chartjs.html">Desligamento</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="fontawesome.html">
-                        <i class="fa fa-bullhorn"></i>
-                        <span>Fontawesome </span>
+                        <i class="fa fa-history"></i>
+                        <span>Histórico de Solicitações </span>
                     </a>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-th"></i>
-                        <span>Data Tables</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="basic_table.html">Basic Table</a></li>
-                        <li><a href="responsive_table.html">Responsive Table</a></li>
-                        <li><a href="dynamic_table.html">Dynamic Table</a></li>
-                        <li><a href="editable_table.html">Editable Table</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-tasks"></i>
-                        <span>Form Components</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="form_component.html">Form Elements</a></li>
-                        <li><a href="advanced_form.html">Advanced Components</a></li>
-                        <li><a href="form_wizard.html">Form Wizard</a></li>
-                        <li><a href="form_validation.html">Form Validation</a></li>
-                        <li><a href="file_upload.html">Muliple File Upload</a></li>
 
-                        <li><a href="dropzone.html">Dropzone</a></li>
-                        <li><a href="inline_editor.html">Inline Editor</a></li>
-
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="active">
-                        <i class="fa fa-envelope"></i>
-                        <span>Mail </span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="mail.html">Inbox</a></li>
-                        <li class="active"><a href="mail_compose.html">Compose Mail</a></li>
-                        <li><a href="mail_view.html">View Mail</a></li>
-                    </ul>
-                </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Charts</span>
+                        <i class="fa fa-cog"></i>
+                        <span>Configurações </span>
                     </a>
                     <ul class="sub">
-                        <li><a href="morris.html">Morris</a></li>
-                        <li><a href="chartjs.html">Chartjs</a></li>
-                        <li><a href="flot_chart.html">Flot Charts</a></li>
-                        <li><a href="c3_chart.html">C3 Chart</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="google_map.html">Google Map</a></li>
-                        <li><a href="vector_map.html">Vector Map</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-glass"></i>
-                        <span>Extra</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="blank.html">Blank Page</a></li>
-                        <li><a href="lock_screen.html">Lock Screen</a></li>
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="invoice.html">Invoice</a></li>
-                        <li><a href="pricing_table.html">Pricing Table</a></li>
-                        <li><a href="timeline.html">Timeline</a></li>
-                        <li><a href="gallery.html">Media Gallery</a></li><li><a href="404.html">404 Error</a></li>
-                        <li><a href="500.html">500 Error</a></li>
-                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="">Motivos de Desligamento</a></li>
+                        <li><a href="">Validações do Desligamento</a></li>
                     </ul>
                 </li>
                 <li>

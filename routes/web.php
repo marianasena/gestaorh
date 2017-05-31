@@ -37,8 +37,8 @@ Route::get('solicitacao/desligamento', function (){
 );
 
 //Filiais
-Route::get('filiais', 'BranchesController@index');
-Route::get('filiais/cadastro', 'BranchesController@create');
+Route::get('filiais', 'BranchesController@index')->name('filiais');
+Route::get('filiais/cadastro', 'BranchesController@create')->name('filiais/cadastro');
 Route::post('filiais', 'BranchesController@store');
 Route::get('filiais/{branch}/editar/', 'BranchesController@edit');
 Route::patch('filiais/{branch}/editar/', 'BranchesController@update');
@@ -53,7 +53,7 @@ Route::patch('departamentos/{department}/editar/', 'DepartmentsController@update
 Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@destroy');
 
 //Usuários
-Route::get('usuarios', 'UsersController@index');
+Route::get('usuarios', 'UsersController@index')->name('usuarios');
 Route::post('usuarios', 'UsersController@store');
 Route::get('usuarios/cadastro', 'UsersController@create');
 Route::get('usuarios/{user}/editar/', 'UsersController@edit'); /*
@@ -81,3 +81,16 @@ Route::get('funcionarios/cadastro', 'EmployeesController@create');
 Route::get('funcionarios/{employee}/editar/', 'EmployeesController@edit');
 Route::patch('funcionarios/{employee}/editar/', 'EmployeesController@update');
 Route::delete('funcionarios/{employee}/deletar/', 'EmployeesController@destroy');
+
+
+Route::group(['prefix' => 'configuracoes'], function () {
+
+    //Razões de Desligamento
+    Route::get('motivosdesligamento', 'UnemploymentReasonsController@index')->name('unemployment_reasons');
+    Route::get('motivosdesligamento/cadastro', 'UnemploymentReasonsController@create')->name('unemployment_reason_create');
+    Route::post('motivosdesligamento', 'UnemploymentReasonsController@store')->name('unemployment_reason_store');
+    Route::get('motivosdesligamento/{unemploymentReason}/editar/', 'UnemploymentReasonsController@edit')->name('unemployment_reason_edit');
+    Route::patch('motivosdesligamento/{unemploymentReason}/editar/', 'UnemploymentReasonsController@update')->name('unemployment_reason_update');
+    Route::delete('motivosdesligamento/{unemploymentReason}/deletar/', 'UnemploymentReasonsController@destroy')->name('unemployment_reason_destroy');
+
+});

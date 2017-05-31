@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\UnemploymentReason;
 use Illuminate\Http\Request;
 
-class UnemploymentReasons extends Controller
+class UnemploymentRequestsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +40,10 @@ class UnemploymentReasons extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UnemploymentReason  $unemploymentReason
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(UnemploymentReason $unemploymentReason)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class UnemploymentReasons extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UnemploymentReason  $unemploymentReason
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(UnemploymentReason $unemploymentReason)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class UnemploymentReasons extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UnemploymentReason  $unemploymentReason
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UnemploymentReason $unemploymentReason)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class UnemploymentReasons extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UnemploymentReason  $unemploymentReason
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UnemploymentReason $unemploymentReason)
+    public function destroy($id)
     {
         //
     }

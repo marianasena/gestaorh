@@ -13,10 +13,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
 <section id="container" >
@@ -63,6 +65,10 @@ fir
 @yield('js_files')
 <script type="text/javascript">
     $(document).ready(function(){
+
+        /*active menu links*/
+        //$('')
+
         @yield('js_doc_ready')
     });
 </script>
