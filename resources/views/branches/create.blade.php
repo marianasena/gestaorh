@@ -8,10 +8,6 @@
         </div>
     </div>
 
-    @if (count($errors) > 0)
-        @include('layouts.error')
-    @endif
-
     <form method="post" action="{{url('filiais')}}">
         {!! csrf_field() !!}
         <div class="row">
@@ -72,8 +68,13 @@
 
 @endsection
 
-@section('js_doc_ready')
-    $('.list-group-item > input[type=checkbox]').click(function(){
-        $(this).parent().toggleClass('active');
-    });
+@section('scripts)
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.list-group-item > input[type=checkbox]').click(function(){
+                $(this).parent().toggleClass('active');
+            });
+        })     ;
+    </script>
+
 @endsection

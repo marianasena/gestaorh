@@ -42,9 +42,13 @@
         <section id="main-content">
             <section class="wrapper">
 
-        @include('flash::message')
+                @include('flash::message')
 
-        @yield('content')
+                @if (count($errors) > 0)
+                    @include('layouts.error')
+                @endif
+
+                @yield('content')
 
 
             </section>
@@ -61,7 +65,7 @@
 
 <!--common script init for all pages-->
 <script src="{{ asset('js/scripts.js') }}"></script>
-fir
+
 @yield('js_files')
 <script type="text/javascript">
     $(document).ready(function(){
@@ -72,5 +76,6 @@ fir
         @yield('js_doc_ready')
     });
 </script>
+@yield('scripts')
 </body>
 </html>

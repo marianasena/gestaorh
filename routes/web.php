@@ -62,9 +62,9 @@ Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@dest
 
  // */
 //Solicitação de Desligamento
-Route::get('solicitar/desligamento', function(){
-    return view('solicitacao');
-});
+Route::get('solicitacoes/desligamento/nova', 'UnemploymentRequestsController@create');
+Route::get('solicitacoes/desligamento', 'UnemploymentRequestsController@index');
+Route::post('solicitacoes/desligamento', 'UnemploymentRequestsController@store')->name('unemployment_request_store');
 
 //Cargo
 Route::get('cargos', 'RolesController@index');
@@ -75,6 +75,7 @@ Route::patch('cargos/{role}/editar/', 'RolesController@update');
 Route::delete('cargos/{role}/deletar/', 'RolesController@destroy');
 
 //Funcionário
+Route::get('getEmployees', 'EmployeesController@getAll')->name('getEmployees');
 Route::get('funcionarios', 'EmployeesController@index');
 Route::post('funcionarios', 'EmployeesController@store');
 Route::get('funcionarios/cadastro', 'EmployeesController@create');

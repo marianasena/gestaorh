@@ -75,6 +75,8 @@ a.logo span {
 }
 .form-control-checkbox{
     height: auto;
+}
+.form-control-checkbox small{
     font-weight: normal;
 }
 

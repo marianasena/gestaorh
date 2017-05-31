@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UnemploymentReason;
+use App\User;
+use App\Employee;
+use Illuminate\Support\Facades\Auth;
 
 class UnemploymentRequestsController extends Controller
 {
@@ -23,7 +27,13 @@ class UnemploymentRequestsController extends Controller
      */
     public function create()
     {
-        //
+        $reasons = UnemploymentReason::orderBy('name', 'asc')->get();
+        $employees = Employee::all();
+        $user = User::find(Auth::id());
+        return view('requests.unemployments.create', [
+            'reasons' => $reasons,
+            'employees' => $employees
+        ]);
     }
 
     /**
@@ -34,7 +44,17 @@ class UnemploymentRequestsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            //'funcionario' => 'required|min:1',
+            'justification' => 'required',
+            'reason' => 'required',
+          //  'justificativa' => 'required|min:20',
+          //  'dispensa' => 'required|date|after:tomorrow',
+        ], [], [
+            'justification' => 'Justificativa',
+            'reason' => 'Motivo',
+            'reason' => 'Data da Dispensa',
+        ]);
     }
 
     /**

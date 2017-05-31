@@ -8,10 +8,6 @@
         </div>
     </div>
 
-    @if (count($errors) > 0)
-        @include('layouts.error')
-    @endif
-
     <form method="post" action="{{ route('unemployment_reason_update', ['unemploymentReason' => $unemploymentReason->id]) }}">
         {!! csrf_field() !!}
         {{method_field('PATCH')}}

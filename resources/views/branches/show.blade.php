@@ -8,10 +8,6 @@
         </div>
     </div>
 
-    @if (count($errors) > 0)
-        @include('layouts.error')
-    @endif
-
     <form method="POST" action="/filiais/{{$branch->id}}/editar/">
         {!! csrf_field() !!}
         {{ method_field('PATCH') }}

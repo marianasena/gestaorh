@@ -8,10 +8,6 @@
         </div>
     </div>
 
-    @if (count($errors) > 0)
-        @include('layouts.error')
-    @endif
-
     <form method="post" action="{{url('departamentos')}}">
         {!! csrf_field() !!}
         <div class="row">

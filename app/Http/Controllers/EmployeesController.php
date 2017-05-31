@@ -26,6 +26,10 @@ class EmployeesController extends Controller
         return view('employees.index', compact('employees'));
     }
 
+    public function getAll(){
+        return Employee::with('branch', 'department', 'role')->get();
+}
+
     public function create()
     {
         $departments = Department::orderBy('name', 'asc')->get();
