@@ -29,3 +29,58 @@ td{
 .icon-select{
     height: inherit;
 }
+
+.mini-stat {
+    background: #fff;
+    padding: 20px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.mini-stat-icon {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+    background: #eee;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    float: left;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.mini-stat-info {
+    font-size: 12px;
+    padding-top: 2px;
+}
+
+.mini-stat-info span {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+}
+.navbar-brand img{
+    float: left;
+    margin-top: -10px;
+    margin-right:10px;
+}
+.dropdown-menu li a span.glyphicon{
+    margin-right: 10px;
+}
+a.logo {
+    color:#2e2e2e;
+    float:left;
+    line-height: 80px;
+    text-transform:uppercase;
+    font-size: 15px !important;
+    margin: 0 !important;
+}
+a.logo span {
+    color: #fff !important;
+}

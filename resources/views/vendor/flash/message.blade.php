@@ -2,19 +2,19 @@
 @foreach ((array) session('flash_notification') as $message)
 
     @php
-        switch ($message['level']) {
-            case 'success':
-                $message['icon'] = 'ok-sign';
-                break;
-            case 'error':
-                $message['icon'] = 'remove-sign';
-                break;
-            case 'warning':
-                $message['icon'] = 'exclamation-sign';
-                break;
-            default:
-                $message['icon'] = 'info-sign';
-        }
+        $message['icon'] = 'info-sign';
+
+       switch ($message['level']) {
+           case 'success':
+               $message['icon'] = 'ok-sign';
+               break;
+           case 'danger':
+               $message['icon'] = 'remove-sign';
+               break;
+           case 'warning':
+               $message['icon'] = 'exclamation-sign';
+               break;
+       }
     @endphp
 
     @if ($message['overlay'])

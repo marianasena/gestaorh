@@ -3,15 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <span class="mini-stat-icon tar"><i class="fa fa-drivers-license-o"></i></span>
+                <div class="mini-stat-info">
+                    <span>22,450</span>
+                    Copy Sold Today
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('js_files')
+        
 @endsection
