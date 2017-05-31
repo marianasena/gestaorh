@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UnemploymentVerifications extends Model
+class UnemploymentVerification extends Model
 {
     //
 }
