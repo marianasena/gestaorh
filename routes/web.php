@@ -126,7 +126,7 @@ Route::group(['prefix' => 'configuracoes'], function () {
     Route::patch('motivosdesligamento/{unemploymentReason}/editar/', 'UnemploymentReasonsController@update')->name('unemployment_reason_update');
     Route::delete('motivosdesligamento/{unemploymentReason}/deletar/', 'UnemploymentReasonsController@destroy')->name('unemployment_reason_destroy');
 
-<<<<<<< HEAD
+
     //Aprovadores
     Route::get('aprovadores', 'ApproversController@index')->name('approvers');
     Route::get('aprovadores/cadastro', 'ApproversController@create')->name('approver_create');
@@ -137,7 +137,7 @@ Route::group(['prefix' => 'configuracoes'], function () {
     Route::get('managers', 'ApproversController@index')->name('managers');
 
 });
-=======
+
     /*
     |--------------------------------------------------------------------------
     | Validação de Desligamento
@@ -150,5 +150,3 @@ Route::group(['prefix' => 'configuracoes'], function () {
     Route::get('validacoesdesligamento/{unemploymentVerification}/editar/', 'UnemploymentVerificationsController@edit')->name('unemployment_verification_edit');
     Route::patch('validacoesdesligamento/{unemploymentVerification}/editar/', 'UnemploymentVerificationsController@update')->name('unemployment_verification_update');
     Route::delete('validacoesdesligamento/{unemploymentVerification}/deletar', 'UnemploymentVerificationsController@destroy')->name('unemployment_verification_destroy');
-});
->>>>>>> e7645cf241fe821548bbdf2107caacbdd616389d
