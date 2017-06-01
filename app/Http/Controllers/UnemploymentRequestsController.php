@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Approver;
+use App\RequestStatus;
+use App\UnemploymentRequest;
 use Illuminate\Http\Request;
 use App\UnemploymentReason;
 use App\User;
@@ -45,16 +48,45 @@ class UnemploymentRequestsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            //'funcionario' => 'required|min:1',
-            'justification' => 'required',
+            'employee' => 'required|min:1',
             'reason' => 'required',
-          //  'justificativa' => 'required|min:20',
-          //  'dispensa' => 'required|date|after:tomorrow',
-        ], [], [
+            'justification' => 'required|min:20',
+            'expected_at' => 'required|date|after:yesterday',
+        ], [
+            'expected_at.after' => 'Data da Dispensa não pode ser uma data anterior a hoje'
+        ], [
+            'employee' => 'Funcionário',
             'justification' => 'Justificativa',
             'reason' => 'Motivo',
-            'reason' => 'Data da Dispensa',
+            'expected_at' => 'Data da Dispensa',
         ]);
+
+        //get the first status -- status default for a just opened request
+        $status = RequestStatus::where('order', '=', 1)->firstOrFail();
+
+        $unemployment_request = new UnemploymentRequest;
+        $unemployment_request->request_status_id = $status->id;
+        $unemployment_request->employee_id = $request['employee'];
+        $unemployment_request->user_id = Auth::user()->id;
+        $unemployment_request->unemployment_reason_id =$request['reason'];
+        $unemployment_request->justification =$request['justification'];
+        $unemployment_request->expected_at =$request['expected_at'];
+
+        $approvers = $status->approvers();
+
+        var_dump($approvers);
+
+      /*  if ($unemployment_request->save()){
+            //notifica aprovador -- aprovadores
+        }else{
+
+        }
+
+
+        //$model = App\Flight::where('legs', '>', 100)->firstOrFail();
+
+        //gravar, notificar próximo aprovador */
+
     }
 
     /**

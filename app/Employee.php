@@ -19,4 +19,8 @@ class Employee extends Model
         return $this->belongsTo(Role::class);
     }
 
+    public function unemployment_requests(){
+        return $this->hasMany(UnemploymentRequest::class);
+    }
+
 }

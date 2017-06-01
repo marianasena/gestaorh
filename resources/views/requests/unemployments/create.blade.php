@@ -47,7 +47,7 @@
 
     <form method="post" action="{{route('unemployment_request_store')}}">
         {{ csrf_field()  }}
-        <input type="hidden" id="employee" value="" />
+        <input type="hidden" name="employee" id="employee" value="{{old('employee')}}" />
         <div class="panel panel-primary">
             <div class="panel-heading">Funcionário</div>
             <div class="panel-body">
@@ -55,7 +55,7 @@
                     <div class="col-md-12">
                         <div class="form-group {{ $errors->has('employee') ? ' has-error' : '' }}">
                             <label>Nome do Funcionário</label>
-                            <input type="text" class="form-control" id="employee_name" value="" placeholder="Nome do Funcionário" />
+                            <input type="text" class="form-control" name="employee_name" id="employee_name" value="{{old('employee_name')}}" placeholder="Nome do Funcionário" />
                             <span class="help-block">
                                 <strong>{{ $errors->first('employee') }}</strong>
                             </span>
@@ -116,7 +116,7 @@
                             <div class="form-group {{ $errors->has('reason') ? ' has-error' : '' }}">
                                 <label class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="radio" name="reason" value="{{$reason->id}}" />
+                                        <input type="radio" name="reason" value="{{$reason->id}}" {{ ( old('reason') == $reason->id ? 'checked="checked"' : '' )  }} />
                                     </span>
                                     <div class="form-control form-control-static form-control-checkbox">
                                         <p>
@@ -138,18 +138,24 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('justification') ? ' has-error' : '' }}">
                             <label>Justificativa</label>
-                            <textarea name="justification" class="form-control"></textarea>
+                            <textarea name="justification" class="form-control">{{old('justification')}}</textarea>
+                            <span class="help-block">
+                                <strong>{{ $errors->first('justification') }}</strong>
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('expected_at') ? ' has-error' : '' }}">
                             <label>Data da Dispensa</label>
-                            <input type="date" class="form-control" />
+                            <input type="date" name="expected_at" value="{{old('expected_at')}}" class="form-control" />
+                            <span class="help-block">
+                                <strong>{{ $errors->first('expected_at') }}</strong>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -180,27 +186,6 @@
     <script type="text/javascript">
         $(document).ready(function (){
 
-            /*    //carrega tags
-             $('#employee').autocomplete({
-             source: function( request, response ) {
-             $.ajax({
-             url:
-             dataType: "json",
-             cache: true,
-             success: function( data ) {
-             console.log(data);
-             response( $.map( data, function( item ) {
-             return {
-             label: item.name,
-             value: item.id
-             }
-             }));
-             }
-             });
-             },
-             minLength: 1
-             });*/
-
             $.ajax({
                 url: '{{route('getEmployees')}}',
                 dataType: "json",
@@ -217,7 +202,6 @@
                             role_name: item.role.name,
 
                         }});
-                    console.log(validOptions);
 
                     //init autocomplete
                     $('#employee_name').autocomplete({

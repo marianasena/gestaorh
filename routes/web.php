@@ -94,4 +94,13 @@ Route::group(['prefix' => 'configuracoes'], function () {
     Route::patch('motivosdesligamento/{unemploymentReason}/editar/', 'UnemploymentReasonsController@update')->name('unemployment_reason_update');
     Route::delete('motivosdesligamento/{unemploymentReason}/deletar/', 'UnemploymentReasonsController@destroy')->name('unemployment_reason_destroy');
 
+    //Aprovadores
+    Route::get('aprovadores', 'ApproversController@index')->name('approvers');
+    Route::get('aprovadores/cadastro', 'ApproversController@create')->name('approver_create');
+    Route::post('aprovadores', 'ApproversController@store')->name('approver_store');
+    Route::delete('aprovadores/{approver}/deletar/', 'ApproversController@destroy')->name('approver_destroy');
+
+    //Gerentes
+    Route::get('managers', 'ApproversController@index')->name('managers');
+
 });

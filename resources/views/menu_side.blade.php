@@ -141,7 +141,17 @@
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Perfil</a></li>
                         <li><a href="#"><i class="fa fa-cog"></i> Configurações</a></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out"></i>Sair</a></li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out"></i>  Sair
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+
                     </ul>
                 </li>
                 <!-- user login dropdown end -->
@@ -199,6 +209,8 @@
                     <ul class="sub">
                         <li><a href="">Motivos de Desligamento</a></li>
                         <li><a href="">Validações do Desligamento</a></li>
+                        <li><a href="{{route('approvers')}}">Aprovadores de Solicitações</a></li>
+                        <li><a href="{{route('managers')}}">Responsáveis Departamento</a></li>
                     </ul>
                 </li>
                 <li>
