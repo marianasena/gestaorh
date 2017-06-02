@@ -45,6 +45,7 @@ Route::get('solicitacao/desligamento', function (){
 | Filiais
 |--------------------------------------------------------------------------
 */
+
 Route::get('filiais', 'BranchesController@index')->name('filiais');
 Route::get('filiais/cadastro', 'BranchesController@create')->name('filiais/cadastro');
 Route::post('filiais', 'BranchesController@store');
@@ -57,6 +58,7 @@ Route::delete('filiais/{branch}/deletar/', 'BranchesController@destroy');
 | Departamentos
 |--------------------------------------------------------------------------
 */
+Route::get('getDepartmentsByBranch', 'DepartmentsController@getDepartmentsByBranch')->name('getDepartmentsByBranch');
 Route::get('departamentos', 'DepartmentsController@index');
 Route::post('departamentos', 'DepartmentsController@store');
 Route::get('departamentos/cadastro', 'DepartmentsController@create');
@@ -81,10 +83,21 @@ Route::delete('departamentos/{department}/deletar/', 'DepartmentsController@dest
 | Solicitação de Desligamento
 |--------------------------------------------------------------------------
 */
-Route::get('solicitacoes/desligamento/nova', 'UnemploymentRequestsController@create');
-Route::get('solicitacoes/desligamento', 'UnemploymentRequestsController@index');
-Route::post('solicitacoes/desligamento', 'UnemploymentRequestsController@store')->name('unemployment_request_store');
+Route::get('/solicitacoes', 'RequestsController@index');
 
+Route::group(['prefix' => 'solicitacoes'], function () {
+
+    //Solicitações em Aberto
+
+
+    //Desligamento
+    Route::get('desligamento/nova', 'UnemploymentRequestsController@create');
+    Route::get('desligamento', 'UnemploymentRequestsController@index');
+    Route::post('desligamento', 'UnemploymentRequestsController@store')->name('unemployment_request_store');
+    Route::get('desligamento/{unemploymentRequest}/visualizar', 'UnemploymentRequestsController@show')->name('unemployment_request_show');
+
+
+});
 /*
 |--------------------------------------------------------------------------
 | Cargo

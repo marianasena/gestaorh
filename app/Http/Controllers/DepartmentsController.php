@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Branch;
 use App\Department;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class DepartmentsController extends Controller
 {
 
     private $validationRules = [
-        'nome' => 'required|min:5'
+        'nome' => 'required|min:2'
     ];
 
     /**
@@ -113,5 +114,11 @@ class DepartmentsController extends Controller
             flash('Não foi possível excluir o Departamento. Verifique os campos e tente novamente.')->error();
 
         return redirect('departamentos');
+    }
+
+
+    public function getDepartmentsByBranch(Request $request){
+        $branch = $request['branch'];
+        return Branch::find($branch)->departments()->get();
     }
 }

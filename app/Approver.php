@@ -10,7 +10,6 @@ class Approver extends Model
         return $this->belongsTo(User::class);
     }
 
-
     public function request_status(){
         return $this->belongsTo(RequestStatus::class);
     }

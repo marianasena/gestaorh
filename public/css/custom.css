@@ -83,3 +83,7 @@ a.logo span {
 .wdgt-value p, .wdgt-value h1{
     color: #767676
 }
+.warning-bg{background-color: #f39c12;}
+.danger-bg{background-color: #e74c3c;}
+.success-bg{background-color: #18bc9c;}
+.info-bg{background-color: #3498db;}

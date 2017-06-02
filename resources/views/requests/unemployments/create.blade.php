@@ -190,6 +190,7 @@
                 url: '{{route('getEmployees')}}',
                 dataType: "json",
                 success: function(data){
+                    console.log(data);
                     var validOptions = $.map( data, function( item ) {
                         return {
                             label: item.name,

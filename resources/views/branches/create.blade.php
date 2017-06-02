@@ -43,12 +43,14 @@
             </div>
         </div>
         <div class="row list-group">
+            <div class="col-md-12">
             @foreach($departments as $department)
                 <div class="col-md-12 list-group-item" >
                     <input type="checkbox" id="dep{{$department->id}}" value="{{$department->id}}" name="departamentos[]" />
                     <label class="chk-label" for="dep{{$department->id}}">{{$department->name}}</label>
                 </div>
             @endforeach
+            </div>
         </div>
 
         <div class="row">

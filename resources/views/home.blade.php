@@ -37,6 +37,24 @@
             </div>
         </div>
 
+        <div class="col-md-2">
+            <div class="profile-nav alt">
+                <section class="panel text-center">
+                    <div class="user-heading alt wdgt-row danger-bg">
+                        <i class="fa fa-drivers-license-o"></i>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="wdgt-value">
+                            <h1 class="count">0</h1>
+                            <p>Solicitações Aguardando Aprovação</p>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection

@@ -44,12 +44,14 @@
             </div>
         </div>
         <div class="row list-group">
+            <div class="col-md-12">
             @foreach($allDepartments as $department)
-                <div class="col-md-12 list-group-item {{ (in_array($department->id, $selectedDepartments) ? 'active' : '') }}" >
+                <div class="list-group-item {{ (in_array($department->id, $selectedDepartments) ? 'active' : '') }}" >
                     <input type="checkbox" {{ (in_array($department->id, $selectedDepartments) ? 'checked="checked"' : '') }} id="dep{{$department->id}}" value="{{$department->id}}" name="departamentos[]" />
                     <label class="chk-label" for="dep{{$department->id}}">{{$department->name}}</label>
                 </div>
             @endforeach
+            </div>
         </div>
 
         <div class="row">

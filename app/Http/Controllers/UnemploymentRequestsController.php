@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Approver;
+use App\Manager;
 use App\RequestStatus;
 use App\UnemploymentRequest;
 use Illuminate\Http\Request;
@@ -72,9 +73,38 @@ class UnemploymentRequestsController extends Controller
         $unemployment_request->justification =$request['justification'];
         $unemployment_request->expected_at =$request['expected_at'];
 
-        $approvers = $status->approvers();
+        if (!$unemployment_request->save()){
+            flash('Não foi possível solicitar o Desligamento. Verifique os campos e tente novamente.')->error();
 
-        var_dump($approvers);
+            //retorno pra view
+            return redirect(route('unemployment_reason_create'));
+        }
+
+        $employee = Employee::find($request['employee']);
+        $approvers = $status->approvers()->where(function($query) use ($employee){
+            $query->where('branch_id', $employee->branch_id)
+                  ->orwhereNull('branch_id');
+        })->where(function($query) use ($employee){
+            $query->where('department_id', $employee->department_id)
+                  ->orwhereNull('department_id');
+        })->get();
+
+
+
+        foreach ($approvers as $approver){
+
+
+
+            //notifica aprovador
+
+
+
+
+        }
+
+        return redirect(route('home'));
+
+
 
       /*  if ($unemployment_request->save()){
             //notifica aprovador -- aprovadores
@@ -95,9 +125,10 @@ class UnemploymentRequestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UnemploymentRequest $unemploymentRequest)
     {
-        //
+       // return $unemploymentRequest;
+        return view('requests.unemployments.show', compact('unemploymentRequest'));
     }
 
     /**

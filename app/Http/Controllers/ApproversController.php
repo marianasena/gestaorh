@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Approver;
+use App\Branch;
 use App\RequestStatus;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,10 +30,12 @@ class ApproversController extends Controller
     {
         $users = User::orderBy('name')->get();
         $request_status = RequestStatus::orderBy('name')->get();
+        $branches = Branch::orderBy('name')->get();
 
         return view('approvers.create',[
             'users' => $users,
-            'request_status' => $request_status
+            'request_status' => $request_status,
+            'branches' => $branches
         ]);
     }
 
@@ -46,13 +49,17 @@ class ApproversController extends Controller
     {
         $this->validate($request, [
             'status' => 'required',
+            'user' => 'required'
         ], [], [
             'status' => 'Status',
+            'user' => 'Usuário'
         ]);
 
         $approver = new Approver;
         $approver->user_id = $request['user'];
         $approver->request_status_id = $request['status'];
+        $approver->branch_id = $request['branch'];
+        $approver->department_id = $request['department_id'];
 
         if ($approver->save()){
             flash('Aprovador cadastrado com sucesso!')->success();

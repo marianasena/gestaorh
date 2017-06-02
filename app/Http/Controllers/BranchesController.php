@@ -94,4 +94,5 @@ class BranchesController extends Controller
         return redirect('filiais');
     }
 
+
 }

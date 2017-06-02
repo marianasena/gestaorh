@@ -199,6 +199,11 @@
                         <i class="fa fa-history"></i>
                         <span>Histórico de Solicitações </span>
                     </a>
+                        <ul class="sub">
+                            <li><a href="">Buscar Solicitação</a></li>
+                            <li><a href="">Solicitações em Aberto</a></li>
+                        </ul>
+                    </a>
                 </li>
 
                 <li class="sub-menu">
